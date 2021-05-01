@@ -1,5 +1,35 @@
-﻿<h3>SimpleView</h3>
+﻿<label for="meal-cost">Meal Cost:</label>
+<input id="meal-cost" type="number" placeholder="meal cost" />
 
-@code {
-
+@if (this.PercentCalculations is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Percent</th>
+                <th>Tip</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var calc in this.PercentCalculations)
+            {
+                <tr>
+                    <td>@($"{calc.Percent:##}")%</td>
+                    <td>$@($"{calc.Tip:###.00}")</td>
+                </tr>
+            }
+            <tr>
+                <td>
+                    <input id="custom-percent" type="number" placeholder="custom percent" />
+                </td>
+                <td>
+                    <span>$100.00</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 }
