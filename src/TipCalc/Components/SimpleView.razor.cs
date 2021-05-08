@@ -1,18 +1,15 @@
 ﻿using JK.TipCalc.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace JK.TipCalc.Components
 {
     public partial class SimpleView
     {
-        protected IEnumerable<TipCalculation> PercentCalculations { get; private set; }
+        protected TipCalculationList PercentCalculations { get; private set; }
+
 
         protected override void OnInitialized()
         {
-            this.PercentCalculations = new List<TipCalculation>
+            this.PercentCalculations = new TipCalculationList
             {
                 new TipCalculation { Amount = 100m, Percent = 10 },
                 new TipCalculation { Amount = 100m, Percent = 15 },
