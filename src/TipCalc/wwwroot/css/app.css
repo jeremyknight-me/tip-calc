@@ -1,4 +1,8 @@
-﻿* {
+﻿:root {
+    --theme-color: #03173d;
+}
+
+* {
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -31,4 +35,34 @@
         position: absolute;
         right: 0.75rem;
         top: 0.5rem;
+    }
+
+/* --- App Loader Styles -------------- */
+
+#app, #splash {
+    height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    width: 100%;
+}
+
+#app #splash {
+    background: var(--theme-color);
+    left: 0;
+    padding-top: 5%;
+    position: absolute;
+    text-align: center;
+    top: 0;
+}
+
+    #app #splash .splash-image img {
+        height: 30%;
+        margin: 5% 0;
+        max-height: 400px;
+        max-width: 400px;
+        width: 30%;
+    }
+
+    #app #splash .splash-text {
+        color: #fff;
     }
