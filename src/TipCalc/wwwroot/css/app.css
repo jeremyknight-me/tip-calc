@@ -66,3 +66,32 @@
     #app #splash .splash-text {
         color: #fff;
     }
+
+/* --- App Styles -------------- */
+
+#content-wrapper {
+    text-align: center;
+}
+
+label {
+    font-weight: 700;
+}
+
+table {
+    margin: 1em auto 0;
+}
+
+table thead tr th,
+table tbody tr td {
+    padding: 0.5em 1em;
+    text-align: left;
+}
+
+table thead tr th {
+    background: var(--theme-color);
+    color: #fff;
+    font-weight: 700;
+    text-align: left;
+}
+
+.text-right { text-align: right; }
