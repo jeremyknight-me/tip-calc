@@ -11,6 +11,7 @@ namespace JK.TipCalc.Models
         public TipCalculationList()
         {
             this.list = new List<TipCalculation>();
+            this.tipAmount = 0;
         }
 
         #region IList Implementation
