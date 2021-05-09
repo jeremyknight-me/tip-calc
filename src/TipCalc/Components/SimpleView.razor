@@ -1,5 +1,7 @@
 ﻿<label for="meal-cost">Meal Cost:</label>
-<input id="meal-cost" type="number" placeholder="meal cost" />
+<input id="meal-cost" type="number" placeholder="meal cost"
+       value="@this.PercentCalculations.MealAmount"
+       @oninput="@this.HandleMealAmountChanged" />
 
 @if (this.PercentCalculations is null)
 {
@@ -19,16 +21,16 @@ else
             {
                 <tr>
                     <td>@($"{calc.Percent:##}")%</td>
-                    <td>$@($"{calc.Tip:###.00}")</td>
+                    <td>$@($"{calc.Tip:##0.00}")</td>
                 </tr>
             }
             <tr>
                 <td>
-                    <input id="custom-percent" type="number" placeholder="custom percent" />
+                    <input id="custom-percent" type="number" placeholder="custom percent"
+                           value="@this.CustomTip.Percent"
+                           @oninput="@this.HandleCustomTipAmountChanged" />
                 </td>
-                <td>
-                    <span>$100.00</span>
-                </td>
+                <td>$@($"{this.CustomTip.Tip:##0.00}")</td>
             </tr>
         </tbody>
     </table>

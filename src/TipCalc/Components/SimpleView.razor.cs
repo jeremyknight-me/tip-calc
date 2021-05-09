@@ -1,25 +1,38 @@
 ﻿using JK.TipCalc.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
 
 namespace JK.TipCalc.Components
 {
     public partial class SimpleView
     {
-        protected IEnumerable<TipCalculation> PercentCalculations { get; private set; }
+        protected TipCalculationList PercentCalculations { get; private set; }
+        protected TipCalculation CustomTip { get; private set; }
 
         protected override void OnInitialized()
         {
-            this.PercentCalculations = new List<TipCalculation>
+            this.CustomTip = new TipCalculation();
+            this.PercentCalculations = new TipCalculationList
             {
-                new TipCalculation { Amount = 100m, Percent = 10 },
-                new TipCalculation { Amount = 100m, Percent = 15 },
-                new TipCalculation { Amount = 100m, Percent = 18 },
-                new TipCalculation { Amount = 100m, Percent = 20 },
-                new TipCalculation { Amount = 100m, Percent = 22 }
+                new TipCalculation { Percent = 10 },
+                new TipCalculation { Percent = 15 },
+                new TipCalculation { Percent = 18 },
+                new TipCalculation { Percent = 20 },
+                new TipCalculation { Percent = 22 }
             };
+        }
+
+        protected void HandleMealAmountChanged(ChangeEventArgs e)
+        {
+            var candidate = e?.Value.ToString();
+            var parsedValue = decimal.TryParse(candidate, out decimal value) ? value : 0;
+            this.PercentCalculations.MealAmount = parsedValue;
+            this.CustomTip.Amount = parsedValue;
+        }
+
+        protected void HandleCustomTipAmountChanged(ChangeEventArgs e)
+        {
+            var candidate = e?.Value.ToString();
+            this.CustomTip.Percent = int.TryParse(candidate, out int value) ? value : 0;
         }
     }
 }
