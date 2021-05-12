@@ -6,12 +6,12 @@ namespace JK.TipCalc.Models
     public class TipCalculationList : IList<TipCalculation>
     {
         private List<TipCalculation> list;
-        private decimal mealAmount;
+        private decimal billAmount;
 
         public TipCalculationList()
         {
             this.list = new List<TipCalculation>();
-            this.mealAmount = 0;
+            this.billAmount = 0;
         }
 
         #region IList Implementation
@@ -38,12 +38,12 @@ namespace JK.TipCalc.Models
 
         #endregion
 
-        public decimal MealAmount 
+        public decimal BillAmount 
         {
-            get => this.mealAmount; 
+            get => this.billAmount; 
             set
             {
-                this.mealAmount = value;
+                this.billAmount = value;
                 foreach (var tipCalc in this.list)
                 {
                     tipCalc.Amount = value;

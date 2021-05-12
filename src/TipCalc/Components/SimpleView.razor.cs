@@ -21,11 +21,11 @@ namespace JK.TipCalc.Components
             };
         }
 
-        protected void HandleMealAmountChanged(ChangeEventArgs e)
+        protected void HandleBillAmountChanged(ChangeEventArgs e)
         {
             var candidate = e?.Value.ToString();
             var parsedValue = decimal.TryParse(candidate, out decimal value) ? value : 0;
-            this.PercentCalculations.MealAmount = parsedValue;
+            this.PercentCalculations.BillAmount = parsedValue;
             this.CustomTip.Amount = parsedValue;
         }
 
