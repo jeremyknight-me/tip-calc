@@ -14,6 +14,7 @@ else
             <tr>
                 <th>Percent</th>
                 <th class="text-right">Tip</th>
+                <th class="text-right">Total</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +23,7 @@ else
                 <tr>
                     <td>@($"{calc.Percent:##}")%</td>
                     <td class="text-right">$@($"{calc.Tip:##0.00}")</td>
+                    <td class="text-right">$@($"{calc.Total:##0.00}")</td>
                 </tr>
             }
             <tr>
@@ -31,6 +33,7 @@ else
                            @oninput="@this.HandleCustomTipAmountChanged" />
                 </td>
                 <td class="text-right">$@($"{this.CustomTip.Tip:##0.00}")</td>
+                <td class="text-right">$@($"{this.CustomTip.Total:##0.00}")</td>
             </tr>
         </tbody>
     </table>
