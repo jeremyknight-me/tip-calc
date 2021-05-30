@@ -1,7 +1,7 @@
-﻿<label for="meal-cost">Meal Cost:</label>
-<input id="meal-cost" type="number" placeholder="meal cost"
-       value="@this.PercentCalculations.MealAmount"
-       @oninput="@this.HandleMealAmountChanged" />
+﻿<label for="bill-amount">Bill Amount:</label>
+<input id="bill-amount" type="number" placeholder="bill amount"
+       value="@this.PercentCalculations.BillAmount"
+       @oninput="@this.HandleBillAmountChanged" />
 
 @if (this.PercentCalculations is null)
 {
