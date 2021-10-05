@@ -1,9 +1,22 @@
 ﻿:root {
-    --theme-color: #03173d;
+    --theme-color: #1e4700;
 }
 
 * {
     font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    border-bottom: 1px solid;
+    font-size: 1em;
+    margin: 0;
+    margin-bottom: 0.5em;
+    padding: 0 0 0.25em;
+    width: 100%;
+}
+
+input {
+    padding: 0.5em;
 }
 
 .valid.modified:not([type=checkbox]) {
@@ -95,3 +108,10 @@ table thead tr th {
 }
 
 .text-right { text-align: right; }
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #111;
+        color: #fff;
+    }
+}
