@@ -1,22 +1,14 @@
 ﻿:root {
-    --theme-color: #1e4700;
+    --theme-rgb: 30, 71, 0;
+    --theme-color: rgb(var(--theme-rgb));
 }
 
 * {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-h1 {
-    border-bottom: 1px solid;
-    font-size: 1em;
-    margin: 0;
-    margin-bottom: 0.5em;
-    padding: 0 0 0.25em;
-    width: 100%;
-}
-
-input {
-    padding: 0.5em;
+body {
+    background: #efefef;
 }
 
 .valid.modified:not([type=checkbox]) {
@@ -90,28 +82,22 @@ label {
     font-weight: 700;
 }
 
-table {
-    margin: 1em auto 0;
-}
-
-table thead tr th,
-table tbody tr td {
-    padding: 0.5em 1em;
-    text-align: left;
-}
-
-table thead tr th {
+table.table tr th {
     background: var(--theme-color);
     color: #fff;
-    font-weight: 700;
-    text-align: left;
 }
 
-.text-right { text-align: right; }
+tr#custom-tip-row {
+    background: rgba(var(--theme-rgb), 0.3);
+}
 
 @media (prefers-color-scheme: dark) {
     body {
         background: #111;
+        color: #fff;
+    }
+
+    table.table tr td {
         color: #fff;
     }
 }

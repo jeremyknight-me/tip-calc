@@ -1,39 +1,56 @@
-﻿<label for="bill-amount">Bill Amount:</label>
-<input id="bill-amount" type="number" placeholder="bill amount"
-       value="@this.PercentCalculations.BillAmount"
-       @oninput="@this.HandleBillAmountChanged" />
+﻿<EditForm Model="this.TipModel">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-auto">
+            <label for="bill-amount" class="col-form-label">Amount</label>
+        </div>
+        <div class="col-auto">
+            <div class="input-group">
+                <span class="input-group-text">$</span>
+                <InputDecimal @bind-Value="this.TipModel.Amount"
+                              placeholder="0.00" class="form-control" min="0" step="0.1" />
+            </div>
+        </div>
+    </div>
+</EditForm>
 
-@if (this.PercentCalculations is null)
+@if (this.TipModel is null || this.TipModel.TipCalculations is null)
 {
     <p>Loading...</p>
 }
 else
 {
-    <table>
+    <table class="table table-striped mt-3">
         <thead>
             <tr>
-                <th>Percent</th>
-                <th class="text-right">Tip</th>
-                <th class="text-right">Total</th>
+                <th class="text-start">Percent</th>
+                <th class="text-end">Tip</th>
+                <th class="text-end">Total</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var calc in this.PercentCalculations)
+            @foreach (var calc in this.TipModel.TipCalculations)
             {
                 <tr>
-                    <td>@($"{calc.Percent:##}")%</td>
-                    <td class="text-right">$@($"{calc.Tip:##0.00}")</td>
-                    <td class="text-right">$@($"{calc.Total:##0.00}")</td>
+                    <td class="text-start">@($"{calc.Percent:##}")%</td>
+                    <td class="text-end">$@($"{calc.Tip:##0.00}")</td>
+                    <td class="text-end">$@($"{calc.Total:##0.00}")</td>
                 </tr>
             }
-            <tr>
-                <td>
-                    <input id="custom-percent" type="number" placeholder="custom percent"
-                           value="@this.CustomTip.Percent"
-                           @oninput="@this.HandleCustomTipAmountChanged" />
+            <tr id="custom-tip-row">
+                <td class="text-start">
+                    <form class="row">
+                        <div class="col-auto">
+                            <div class="input-group input-group-sm">
+                                <input id="custom-percent" type="number" placeholder="custom percent"
+                                       value="@this.TipModel.CustomTip.Percent" class="form-control" step="1" min="0"
+                                       @oninput="@this.HandleCustomTipAmountChanged" />
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </form>
                 </td>
-                <td class="text-right">$@($"{this.CustomTip.Tip:##0.00}")</td>
-                <td class="text-right">$@($"{this.CustomTip.Total:##0.00}")</td>
+                <td class="text-end">$@($"{this.TipModel.CustomTip.Tip:##0.00}")</td>
+                <td class="text-end">$@($"{this.TipModel.CustomTip.Total:##0.00}")</td>
             </tr>
         </tbody>
     </table>
