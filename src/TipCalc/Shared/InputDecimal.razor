@@ -1,0 +1,37 @@
+﻿@typeparam T
+@inherits InputNumber<T>
+
+<input @attributes="AdditionalAttributes"
+       type="number"
+       class="@CssClass"
+       value="@stringValue"
+       @oninput="OnInput"
+       @onblur="OnBlur" />
+
+@code {
+    private string stringValue;
+    private T last;
+
+    protected override void OnParametersSet()
+    {
+        if (!this.CurrentValue.Equals(last))
+        {
+            this.last = this.CurrentValue;
+            this.stringValue = this.CurrentValueAsString;
+        }
+    }
+
+    private void OnInput(ChangeEventArgs e)
+    {
+        this.CurrentValueAsString = this.stringValue = e.Value.ToString();
+        this.last = this.CurrentValue;
+    }
+
+    private void OnBlur(FocusEventArgs e)
+    {
+        if (!this.EditContext.GetValidationMessages(this.FieldIdentifier).Any())
+        {
+            this.stringValue = this.CurrentValueAsString;
+        }
+    }
+}

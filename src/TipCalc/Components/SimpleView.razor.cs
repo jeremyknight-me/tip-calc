@@ -1,38 +1,33 @@
 ﻿using JK.TipCalc.Models;
 using Microsoft.AspNetCore.Components;
+using System.Collections.Generic;
 
 namespace JK.TipCalc.Components
 {
     public partial class SimpleView
     {
-        protected TipCalculationList PercentCalculations { get; private set; }
-        protected TipCalculation CustomTip { get; private set; }
+        protected TipList TipModel { get; private set; }
 
         protected override void OnInitialized()
         {
-            this.CustomTip = new TipCalculation();
-            this.PercentCalculations = new TipCalculationList
+            this.TipModel = new TipList
             {
-                new TipCalculation { Percent = 10 },
-                new TipCalculation { Percent = 15 },
-                new TipCalculation { Percent = 18 },
-                new TipCalculation { Percent = 20 },
-                new TipCalculation { Percent = 22 }
+                CustomTip = new TipCalculation { Percent = 25 },
+                TipCalculations = new List<TipCalculation>
+                {
+                    new TipCalculation { Percent = 10 },
+                    new TipCalculation { Percent = 15 },
+                    new TipCalculation { Percent = 18 },
+                    new TipCalculation { Percent = 20 },
+                    new TipCalculation { Percent = 22 }
+                }
             };
-        }
-
-        protected void HandleBillAmountChanged(ChangeEventArgs e)
-        {
-            var candidate = e?.Value.ToString();
-            var parsedValue = decimal.TryParse(candidate, out decimal value) ? value : 0;
-            this.PercentCalculations.BillAmount = parsedValue;
-            this.CustomTip.Amount = parsedValue;
         }
 
         protected void HandleCustomTipAmountChanged(ChangeEventArgs e)
         {
             var candidate = e?.Value.ToString();
-            this.CustomTip.Percent = int.TryParse(candidate, out int value) ? value : 0;
+            this.TipModel.CustomTip.Percent = int.TryParse(candidate, out int value) ? value : 0;
         }
     }
 }
