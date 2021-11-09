@@ -1,5 +1,4 @@
-﻿@typeparam T
-@inherits InputNumber<T>
+﻿@inherits InputNumber<decimal>
 
 <input @attributes="AdditionalAttributes"
        type="number"
@@ -10,7 +9,7 @@
 
 @code {
     private string stringValue;
-    private T last;
+    private decimal last;
 
     protected override void OnParametersSet()
     {
