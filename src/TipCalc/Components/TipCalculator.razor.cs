@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace JK.TipCalc.Components;
 
-public partial class SimpleView
+public partial class TipCalculator
 {
     protected TipList TipModel { get; private set; }
 
