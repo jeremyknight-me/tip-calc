@@ -5,6 +5,7 @@ namespace JK.TipCalc.Models;
 public class TipList
 {
     private decimal amount;
+    private decimal discount;
 
     public List<TipCalculation> TipCalculations { get; set; }
     public TipCalculation CustomTip { get; set; }
@@ -16,10 +17,18 @@ public class TipList
         {
             this.amount = value;
             this.CustomTip.Amount = value;
-            foreach (var calc in this.TipCalculations)
-            {
-                calc.Amount = value;
-            }
+            this.TipCalculations.ForEach(calc => calc.Amount = value);
+        }
+    }
+
+    public decimal Discount
+    {
+        get => this.discount;
+        set
+        {
+            this.discount = value;
+            this.CustomTip.Discount = value;
+            this.TipCalculations.ForEach(calc => calc.Discount = value);
         }
     }
 }

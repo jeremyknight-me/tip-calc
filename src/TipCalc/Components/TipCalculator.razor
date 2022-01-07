@@ -1,14 +1,21 @@
 ﻿<EditForm Model="this.TipModel">
-    <div class="row justify-content-center align-items-center">
-        <div class="col-auto">
-            <label for="bill-amount" class="col-form-label">Amount</label>
-        </div>
-        <div class="col-auto">
+    <div class="row justify-content-sm-center text-start">
+        <div class="col col-sm-6 col-md-4 col-lg-3">
+            <label for="bill-amount" class="form-label">Amount</label>
             <div class="input-group">
                 <span class="input-group-text">$</span>
-                <InputDecimal @bind-Value="this.TipModel.Amount"
+                <InputDecimal id="bill-amount" @bind-Value="this.TipModel.Amount"
                               placeholder="0.00" class="form-control" min="0" step="0.1" />
             </div>
+        </div>
+        <div class="col col-sm-6 col-md-4 col-lg-3">
+            <label for="bill-discount" class="form-label">Discount</label>
+            <div class="input-group">
+                <span class="input-group-text">$</span>
+                <InputDecimal id="bill-discount" @bind-Value="this.TipModel.Discount"
+                              placeholder="0.00" class="form-control" min="0" step="0.1" />
+            </div>
+            <div class="form-text text-start"><small>Add Gift Cards, etc.</small></div>
         </div>
     </div>
 </EditForm>
@@ -42,8 +49,8 @@ else
                         <div class="col-auto">
                             <div class="input-group input-group-sm">
                                 <input id="custom-percent" type="number" placeholder="custom percent"
-                                       value="@this.TipModel.CustomTip.Percent" class="form-control" step="1" min="0"
-                                       @oninput="@this.HandleCustomTipAmountChanged" />
+                                   value="@this.TipModel.CustomTip.Percent" class="form-control" step="1" min="0"
+                                   @oninput="@this.HandleCustomTipAmountChanged" />
                                 <span class="input-group-text">%</span>
                             </div>
                         </div>

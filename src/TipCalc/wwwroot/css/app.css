@@ -11,14 +11,14 @@ body {
     background: #efefef;
 }
 
-.valid.modified:not([type=checkbox]) {
+/*.valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;
 }
 
 .invalid {
     outline: 1px solid red;
 }
-
+*/
 .validation-message {
     color: red;
 }
@@ -99,5 +99,10 @@ tr#custom-tip-row {
 
     table.table tr td {
         color: #fff;
+    }
+
+    .input-group-text {
+        background-color: #333333;
+        color: #ddd;
     }
 }
