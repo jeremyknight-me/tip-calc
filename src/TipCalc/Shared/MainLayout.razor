@@ -14,4 +14,32 @@
 </nav>
 <div id="content-wrapper">
     @Body
+
+    <div class="text-center small">
+        <button type="button" class="btn btn-link text-success" style="text-decoration: none;" 
+            data-bs-toggle="modal" data-bs-target="#aboutModal">
+            About
+        </button>
+    </div>
+</div>
+
+<div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <div class="modal-body">
+                <h2>TipCalc</h2>
+                <p>The app can be installed on Windows (thru multiple modern browsers), Android (thru Chrome), and iOS (thru Safari).</p>
+                <p>
+                    Developed by <a href="https://www.jeremyknight.me" target="_blank" class="text-success" style="text-decoration: none;">Jeremy Knight</a>
+                    as a free tool. If you'd like to show your appreciation, please use the button below.
+                </p>
+                <div class="text-center">
+                    <a href="https://ko-fi.com/jeremyknight" target="_blank"><img height='35' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
