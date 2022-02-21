@@ -98,7 +98,7 @@ tr#custom-tip-row {
     }
 
     table.table tr td {
-        color: #fff;
+        color: #fff !important;
     }
 
     .input-group-text {
