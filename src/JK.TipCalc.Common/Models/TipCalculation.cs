@@ -1,5 +1,4 @@
-﻿namespace JK.TipCalc.Models;
-
+﻿namespace JK.TipCalc.Common.Models;
 public class TipCalculation
 {
     public decimal Amount { get; set; }

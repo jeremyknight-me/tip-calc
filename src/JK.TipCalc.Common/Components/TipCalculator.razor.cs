@@ -1,9 +1,7 @@
-﻿using JK.TipCalc.Models;
+﻿using JK.TipCalc.Common.Models;
 using Microsoft.AspNetCore.Components;
-using System.Collections.Generic;
 
-namespace JK.TipCalc.Components;
-
+namespace JK.TipCalc.Common.Components;
 public partial class TipCalculator
 {
     protected TipList TipModel { get; private set; }

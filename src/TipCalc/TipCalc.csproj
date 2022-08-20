@@ -18,6 +18,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\JK.TipCalc.Common\JK.TipCalc.Common.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
         <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
     </ItemGroup>
 
