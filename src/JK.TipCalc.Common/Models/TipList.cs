@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace JK.TipCalc.Models;
-
+﻿namespace JK.TipCalc.Common.Models;
 public class TipList
 {
     private decimal amount;
