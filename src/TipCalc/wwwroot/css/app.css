@@ -1,29 +1,4 @@
-﻿:root {
-    --theme-rgb: 30, 71, 0;
-    --theme-color: rgb(var(--theme-rgb));
-}
-
-* {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-    background: #efefef;
-}
-
-/*.valid.modified:not([type=checkbox]) {
-    outline: 1px solid #26b050;
-}
-
-.invalid {
-    outline: 1px solid red;
-}
-*/
-.validation-message {
-    color: red;
-}
-
-#blazor-error-ui {
+﻿#blazor-error-ui {
     background: lightyellow;
     bottom: 0;
     box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
@@ -71,38 +46,3 @@ body {
     #app #splash .splash-text {
         color: #fff;
     }
-
-/* --- App Styles -------------- */
-
-#content-wrapper {
-    text-align: center;
-}
-
-label {
-    font-weight: 700;
-}
-
-table.table tr th {
-    background: var(--theme-color);
-    color: #fff;
-}
-
-tr#custom-tip-row {
-    background: rgba(var(--theme-rgb), 0.3);
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background: #111;
-        color: #fff;
-    }
-
-    table.table tr td {
-        color: #fff !important;
-    }
-
-    .input-group-text {
-        background-color: #333333;
-        color: #ddd;
-    }
-}

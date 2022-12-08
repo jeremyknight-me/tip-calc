@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\JK.TipCalc.Common\JK.TipCalc.Common.csproj" />
   </ItemGroup>
 
 </Project>

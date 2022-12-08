@@ -1,5 +1,4 @@
-﻿using JK.TipCalc.Models;
-using Xunit;
+﻿using JK.TipCalc.Common.Models;
 
 namespace JK.TipCalc.Tests.Models
 {
