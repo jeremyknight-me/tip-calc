@@ -1,10 +1,10 @@
-﻿<EditForm Model="this.TipModel">
+﻿<EditForm Model="this.ViewModel">
     <div class="row justify-content-sm-center text-start">
         <div class="col col-sm-6 col-md-4 col-lg-3">
             <label for="bill-amount" class="form-label">Amount</label>
             <div class="input-group">
                 <span class="input-group-text">$</span>
-                <InputDecimal id="bill-amount" @bind-Value="this.TipModel.Amount"
+                <InputDecimal id="bill-amount" @bind-Value="this.ViewModel.Amount"
                               placeholder="0.00" class="form-control" min="0" step="0.1" />
             </div>
         </div>
@@ -12,7 +12,7 @@
             <label for="bill-discount" class="form-label">Discount</label>
             <div class="input-group">
                 <span class="input-group-text">$</span>
-                <InputDecimal id="bill-discount" @bind-Value="this.TipModel.Discount"
+                <InputDecimal id="bill-discount" @bind-Value="this.ViewModel.Discount"
                               placeholder="0.00" class="form-control" min="0" step="0.1" />
             </div>
             <div class="form-text text-start"><small>Add Gift Cards, etc.</small></div>
@@ -20,7 +20,7 @@
     </div>
 </EditForm>
 
-@if (this.TipModel is null || this.TipModel.TipCalculations is null)
+@if (this.ViewModel is null || this.ViewModel.Tips.Items is null)
 {
     <p>Loading...</p>
 }
@@ -35,11 +35,11 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var calc in this.TipModel.TipCalculations)
+            @foreach (var calc in this.ViewModel.Tips.Items)
             {
                 <tr>
-                    <td class="text-start">@($"{calc.Percent:##}")%</td>
-                    <td class="text-end">$@($"{calc.Tip:##0.00}")</td>
+                    <td class="text-start">@($"{calc.Percent}")%</td>
+                    <td class="text-end">$@($"{calc.TipAmount:##0.00}")</td>
                     <td class="text-end">$@($"{calc.Total:##0.00}")</td>
                 </tr>
             }
@@ -49,15 +49,15 @@ else
                         <div class="col-auto">
                             <div class="input-group input-group-sm">
                                 <input id="custom-percent" type="number" placeholder="custom percent"
-                                   value="@this.TipModel.CustomTip.Percent" class="form-control" step="1" min="0"
+                                   value="@this.ViewModel.CustomTip.Percent" class="form-control" step="1" min="0"
                                    @oninput="@this.HandleCustomTipAmountChanged" />
                                 <span class="input-group-text">%</span>
                             </div>
                         </div>
                     </form>
                 </td>
-                <td class="text-end">$@($"{this.TipModel.CustomTip.Tip:##0.00}")</td>
-                <td class="text-end">$@($"{this.TipModel.CustomTip.Total:##0.00}")</td>
+                <td class="text-end">$@($"{this.ViewModel.CustomTip.TipAmount:##0.00}")</td>
+                <td class="text-end">$@($"{this.ViewModel.CustomTip.Total:##0.00}")</td>
             </tr>
         </tbody>
     </table>
