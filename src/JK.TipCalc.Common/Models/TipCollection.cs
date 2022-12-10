@@ -17,9 +17,25 @@ public sealed class TipCollection
 
     public void SetMealValues(decimal amount, decimal discount)
     {
-        foreach (var tip in this.Items)
+        foreach (var item in this.Items)
         {
-            tip.SetMealValues(amount, discount);
+            item.SetMealValues(amount, discount);
+        }
+    }
+
+    public void RoundDown()
+    {
+        foreach (var item in this.Items)
+        {
+            item.RoundDown();
+        }
+    }
+
+    public void RoundUp()
+    {
+        foreach (var item in this.Items)
+        {
+            item.RoundUp();
         }
     }
 }

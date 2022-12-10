@@ -1,31 +1,31 @@
-﻿<EditForm Model="this.ViewModel">
-    <div class="row justify-content-sm-center text-start">
-        <div class="col col-sm-6 col-md-4 col-lg-3">
-            <label for="bill-amount" class="form-label">Amount</label>
-            <div class="input-group">
-                <span class="input-group-text">$</span>
-                <InputDecimal id="bill-amount" @bind-Value="this.ViewModel.Amount"
-                              placeholder="0.00" class="form-control" min="0" step="0.1" />
-            </div>
-        </div>
-        <div class="col col-sm-6 col-md-4 col-lg-3">
-            <label for="bill-discount" class="form-label">Discount</label>
-            <div class="input-group">
-                <span class="input-group-text">$</span>
-                <InputDecimal id="bill-discount" @bind-Value="this.ViewModel.Discount"
-                              placeholder="0.00" class="form-control" min="0" step="0.1" />
-            </div>
-            <div class="form-text text-start"><small>Add Gift Cards, etc.</small></div>
-        </div>
-    </div>
-</EditForm>
-
-@if (this.ViewModel is null || this.ViewModel.Tips.Items is null)
+﻿@if (this.ViewModel is null || this.ViewModel.Tips.Items is null)
 {
     <p>Loading...</p>
 }
 else
 {
+    <EditForm Model="this.ViewModel">
+        <div class="row justify-content-sm-center text-start">
+            <div class="col col-sm-6 col-md-4 col-lg-3">
+                <label for="bill-amount" class="form-label">Amount</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <InputDecimal id="bill-amount" @bind-Value="this.ViewModel.Amount"
+                              placeholder="0.00" class="form-control" min="0" step="0.1" />
+                </div>
+            </div>
+            <div class="col col-sm-6 col-md-4 col-lg-3">
+                <label for="bill-discount" class="form-label">Discount</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <InputDecimal id="bill-discount" @bind-Value="this.ViewModel.Discount"
+                              placeholder="0.00" class="form-control" min="0" step="0.1" />
+                </div>
+                <div class="form-text text-start"><small>Add Gift Cards, etc.</small></div>
+            </div>
+        </div>
+    </EditForm>
+
     <table class="table table-striped mt-3">
         <thead>
             <tr>
@@ -61,4 +61,16 @@ else
             </tr>
         </tbody>
     </table>
+
+    <div class="text-center">
+        <button type="button" class="btn btn-success" @onclick="this.ViewModel.RoundDown">
+            Round Down
+        </button>
+        <button type="button" class="btn btn-warning" @onclick="this.ViewModel.Reset">
+            Reset
+        </button>
+        <button type="button" class="btn btn-success" @onclick="this.ViewModel.RoundUp">
+            Round Up
+        </button>
+    </div>
 }

@@ -16,6 +16,6 @@ public partial class TipCalculator
     protected void HandleCustomTipAmountChanged(ChangeEventArgs e)
     {
         var candidate = e?.Value?.ToString()?.Trim() ?? string.Empty;
-        this.ViewModel.CustomTip.Percent.SetValue(candidate);
+        this.ViewModel.ChangeCustomTip(candidate);
     }
 }
