@@ -12,16 +12,10 @@ public sealed class Percent
     {
         if (value < 0 || value > 100)
         {
-            throw new ArgumentOutOfRangeException(nameof(value), "Percent value must be an integer between 0 and 100");
+            throw new InvalidPercentException(nameof(value));
         }
 
         this.Value = value;
-    }
-
-    public void SetValue(string value)
-    {
-        var newValue = int.TryParse(value, out int intValue) ? intValue : 0;
-        this.SetValue(newValue);
     }
 
     public static Percent Create(int value) => new(value);

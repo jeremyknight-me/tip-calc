@@ -35,21 +35,31 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var calc in this.ViewModel.Tips.Items)
+@*            @foreach (var calc in this.ViewModel.Tips.Items)
             {
                 <tr>
                     <td class="text-start">@($"{calc.Percent}")%</td>
                     <td class="text-end">$@($"{calc.TipAmount:##0.00}")</td>
                     <td class="text-end">$@($"{calc.Total:##0.00}")</td>
                 </tr>
+            }*@
+            @for (int i = 0; i < this.ViewModel.Tips.Items.Count - 1; i++)
+            {
+                var calc = this.ViewModel.Tips.Items[i];
+                <tr>
+                    <td class="text-start">@($"{calc.Percent}")%</td>
+                    <td class="text-end">$@($"{calc.TipAmount:##0.00}")</td>
+                    <td class="text-end">$@($"{calc.Total:##0.00}")</td>
+                </tr>
             }
+
             <tr id="custom-tip-row">
                 <td class="text-start">
                     <form class="row">
                         <div class="col-auto">
                             <div class="input-group input-group-sm">
-                                <input id="custom-percent" type="number" placeholder="custom percent"
-                                   value="@this.ViewModel.CustomTip.Percent" class="form-control" step="1" min="0"
+                                <input id="custom-percent" type="number" placeholder="custom percent" 
+                                   value="@this.ViewModel.CustomTip.Percent" class="form-control"
                                    @oninput="@this.HandleCustomTipAmountChanged" />
                                 <span class="input-group-text">%</span>
                             </div>
@@ -73,4 +83,16 @@ else
             Round Up
         </button>
     </div>
+
+    @if (this.ViewModel.HasErrors)
+    {
+       <div class="alert alert-danger text-start mt-3">
+           <ul>
+            @foreach (var error in this.ViewModel.Errors)
+            {
+                <li>@error</li>    
+            }
+            </ul>
+       </div> 
+    }
 }
