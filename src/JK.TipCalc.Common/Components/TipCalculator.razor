@@ -73,14 +73,14 @@ else
     </table>
 
     <div class="text-center">
-        <button type="button" class="btn btn-secondary" @onclick="this.ViewModel.RoundDown">
-            Round Down
+        <button type="button" class="btn btn-secondary" @onclick="this.ViewModel.RoundDown" title="Round Down">
+            Round <i class="bi bi-arrow-down-circle"></i><span class="visually-hidden">Up</span>
         </button>
-        <button type="button" class="btn btn-danger" @onclick="this.ViewModel.Reset">
-            Reset
+        <button type="button" class="btn btn-danger" @onclick="this.ViewModel.Reset" title="Reset">
+            Reset <i class="bi bi-arrow-clockwise"></i>
         </button>
-        <button type="button" class="btn btn-secondary" @onclick="this.ViewModel.RoundUp">
-            Round Up
+        <button type="button" class="btn btn-secondary" @onclick="this.ViewModel.RoundUp" title="Round Up">
+            Round <i class="bi bi-arrow-up-circle"></i><span class="visually-hidden">Down</span>
         </button>
     </div>
 
