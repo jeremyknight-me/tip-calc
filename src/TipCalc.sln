@@ -14,8 +14,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JK.TipCalc.Common", "JK.Tip
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JK.TipCalc.Common.Tests", "JK.TipCalc.Common.Tests\JK.TipCalc.Common.Tests.csproj", "{5AF82DCC-52CB-4051-B2B8-463ABAA8B05F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TipCalc.Maui", "TipCalc.Maui\TipCalc.Maui.csproj", "{FC09E423-1AAA-4143-BD44-D60032DBF73F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,12 +32,6 @@ Global
 		{5AF82DCC-52CB-4051-B2B8-463ABAA8B05F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AF82DCC-52CB-4051-B2B8-463ABAA8B05F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AF82DCC-52CB-4051-B2B8-463ABAA8B05F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC09E423-1AAA-4143-BD44-D60032DBF73F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC09E423-1AAA-4143-BD44-D60032DBF73F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC09E423-1AAA-4143-BD44-D60032DBF73F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{FC09E423-1AAA-4143-BD44-D60032DBF73F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC09E423-1AAA-4143-BD44-D60032DBF73F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC09E423-1AAA-4143-BD44-D60032DBF73F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
