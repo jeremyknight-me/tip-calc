@@ -35,14 +35,6 @@ else
             </tr>
         </thead>
         <tbody>
-@*            @foreach (var calc in this.ViewModel.Tips.Items)
-            {
-                <tr>
-                    <td class="text-start">@($"{calc.Percent}")%</td>
-                    <td class="text-end">$@($"{calc.TipAmount:##0.00}")</td>
-                    <td class="text-end">$@($"{calc.Total:##0.00}")</td>
-                </tr>
-            }*@
             @for (int i = 0; i < this.ViewModel.Tips.Items.Count - 1; i++)
             {
                 var calc = this.ViewModel.Tips.Items[i];

@@ -1,4 +1,6 @@
-﻿namespace JK.TipCalc.Maui;
+﻿using Microsoft.Extensions.Logging;
+
+namespace JK.TipCalc.Maui;
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
@@ -12,11 +14,11 @@ public static class MauiProgram
             });
 
         builder.Services.AddMauiBlazorWebView();
+
 #if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
+		builder.Logging.AddDebug();
 #endif
-
-        //builder.Services.AddSingleton<WeatherForecastService>();
 
         return builder.Build();
     }
