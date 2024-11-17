@@ -1,0 +1,16 @@
+<Project>
+    <PropertyGroup>
+        <LangVersion>13.0</LangVersion>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+
+        <Authors>Jeremy Knight</Authors>
+        <Company>Jeremy Knight</Company>
+        <Copyright>Copyright Jeremy Knight. All rights reserved.</Copyright>
+        <PackageProjectUrl>https://github.com/jeremyknight-me/tip-calc</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/jeremyknight-me/tip-calc</RepositoryUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+</Project>
