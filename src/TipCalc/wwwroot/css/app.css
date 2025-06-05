@@ -82,3 +82,9 @@ table.table tr th {
     #app #splash .splash-text {
         color: #fff;
     }
+
+@media all and (display-mode: standalone) {
+    #pwa-install {
+        display: none;
+    }
+}
