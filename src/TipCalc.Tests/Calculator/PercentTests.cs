@@ -1,6 +1,6 @@
-﻿using JK.TipCalc.Common.Models;
+﻿using JK.TipCalc.Calculator;
 
-namespace JK.TipCalc.Common.Tests.Models;
+namespace JK.TipCalc.Tests.Calculator;
 
 public class PercentTests
 {
@@ -22,5 +22,6 @@ public class PercentTests
     {
         var sut = Percent.Create(0);
         _ = Assert.Throws<InvalidPercentException>(() => sut.SetValue(value));
+        
     }
 }

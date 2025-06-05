@@ -1,6 +1,6 @@
-﻿using JK.TipCalc.Common.Models;
+﻿using JK.TipCalc.Calculator;
 
-namespace JK.TipCalc.Common.Tests.Models;
+namespace JK.TipCalc.Tests.Calculator;
 
 public class TipTests
 {

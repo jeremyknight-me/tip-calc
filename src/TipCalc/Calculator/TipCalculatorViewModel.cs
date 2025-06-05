@@ -1,4 +1,5 @@
-﻿namespace JK.TipCalc.Common.Models;
+﻿namespace JK.TipCalc.Calculator;
+
 public class TipCalculatorViewModel
 {
     private decimal amount;
@@ -58,8 +59,8 @@ public class TipCalculatorViewModel
             case CalculatorState.RoundUp:
                 this.CustomTip.RoundUp();
                 break;
-            //case CalculatorState.Default:
-            //default:
+                //case CalculatorState.Default:
+                //default:
         }
     }
 

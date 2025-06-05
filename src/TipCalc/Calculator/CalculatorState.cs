@@ -1,4 +1,5 @@
-﻿namespace JK.TipCalc.Common.Models;
+﻿namespace JK.TipCalc.Calculator;
+
 public enum CalculatorState
 {
     Default,

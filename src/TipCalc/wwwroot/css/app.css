@@ -1,4 +1,40 @@
-﻿#blazor-error-ui {
+﻿:root {
+    --theme-rgb: 30, 71, 0;
+    --theme-color: rgb(var(--theme-rgb));
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #efefef;
+}
+
+.validation-message {
+    color: red;
+}
+
+#content-wrapper {
+    text-align: center;
+}
+
+label {
+    font-weight: 700;
+}
+
+table.table tr th {
+    background: var(--theme-color);
+    color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #111;
+    }
+}
+
+#blazor-error-ui {
     background: lightyellow;
     bottom: 0;
     box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);

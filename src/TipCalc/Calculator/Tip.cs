@@ -1,4 +1,4 @@
-﻿namespace JK.TipCalc.Common.Models;
+﻿namespace JK.TipCalc.Calculator;
 
 public class Tip
 {
