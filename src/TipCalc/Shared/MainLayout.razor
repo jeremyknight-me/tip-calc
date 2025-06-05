@@ -1,4 +1,7 @@
 ﻿@inherits LayoutComponentBase
+
+@inject IJSRuntime JS
+
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand">
@@ -6,6 +9,9 @@
             TipCalc
         </a>
         <div>
+            <button id="pwa-install" class="btn btn-sm btn-link text-success-emphasis" type="button" @onclick="Install">
+                Install
+            </button>
             <a href="https://github.com/jeremyknight-me/tip-calc" target="_blank" title="GitHub Repository" class="text-white">
                 <i class="bi bi-github"></i>
             </a>
@@ -17,7 +23,7 @@
 
     <div class="text-center small">
         <button type="button" class="btn btn-link text-success" style="text-decoration: none;"
-                data-bs-toggle="modal" data-bs-target="#aboutModal">
+        data-bs-toggle="modal" data-bs-target="#aboutModal">
             About
         </button>
     </div>
@@ -43,3 +49,10 @@
         </div>
     </div>
 </div>
+
+@code {
+    private async Task Install()
+    {
+        await this.JS.InvokeVoidAsync("tipcalc.installApp");
+    }
+}
