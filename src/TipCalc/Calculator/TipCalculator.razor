@@ -1,0 +1,117 @@
+﻿@if (this.viewModel is null || this.viewModel.Tips.Items is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <EditForm Model="this.viewModel">
+        <div class="row justify-content-sm-center text-start">
+            <div class="col col-sm-6 col-md-4 col-lg-3">
+                <label for="bill-amount" class="form-label">Amount</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <InputDecimal id="bill-amount" @bind-Value="this.viewModel.Amount"
+                        placeholder="0.00" class="form-control" min="0" step="0.1" />
+                </div>
+            </div>
+            <div class="col col-sm-6 col-md-4 col-lg-3">
+                <label for="bill-discount" class="form-label">Discount</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <InputDecimal id="bill-discount" @bind-Value="this.viewModel.Discount"
+                        placeholder="0.00" class="form-control" min="0" step="0.1" />
+                </div>
+                <div class="form-text text-start"><small>Add Gift Cards, etc.</small></div>
+            </div>
+        </div>
+    </EditForm>
+
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th class="text-start">Percent</th>
+                <th class="text-end">Tip</th>
+                <th class="text-end">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < this.viewModel.Tips.Items.Count - 1; i++)
+            {
+                var calc = this.viewModel.Tips.Items[i];
+                <tr>
+                    <td class="text-start">@($"{calc.Percent}")%</td>
+                    <td class="text-end">$@($"{calc.TipAmount:##0.00}")</td>
+                    <td class="text-end">$@($"{calc.Total:##0.00}")</td>
+                </tr>
+            }
+
+            <tr id="custom-tip-row">
+                <td class="text-start">
+                    <form class="row">
+                        <div class="col-auto">
+                            <div class="input-group input-group-sm">
+                                <input id="custom-percent" type="number" placeholder="custom percent" 
+                                    value="@this.viewModel.CustomTip.Percent" class="form-control"
+                                @oninput="@this.HandleCustomTipAmountChanged" />
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </form>
+                </td>
+                <td class="text-end">$@($"{this.viewModel.CustomTip.TipAmount:##0.00}")</td>
+                <td class="text-end">$@($"{this.viewModel.CustomTip.Total:##0.00}")</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        <button type="button" class="btn btn-secondary" @onclick="this.viewModel.RoundDown" title="Round Down">
+            Round <i class="bi bi-arrow-down-circle"></i><span class="visually-hidden">Up</span>
+        </button>
+        <button type="button" class="btn btn-danger" @onclick="this.viewModel.Reset" title="Reset">
+            Reset <i class="bi bi-arrow-clockwise"></i>
+        </button>
+        <button type="button" class="btn btn-secondary" @onclick="this.viewModel.RoundUp" title="Round Up">
+            Round <i class="bi bi-arrow-up-circle"></i><span class="visually-hidden">Down</span>
+        </button>
+    </div>
+
+    @if (this.viewModel.HasErrors)
+    {
+        <div class="alert alert-danger text-start mt-3">
+            <ul>
+                @foreach (var error in this.viewModel.Errors)
+                {
+                    <li>@error</li>    
+                }
+            </ul>
+        </div> 
+    }
+}
+
+@code 
+{
+    private TipCalculatorViewModel viewModel;
+
+    protected override void OnInitialized()
+    {
+        const int customTipPercent = 25;
+        var percentages = new int[] { 10, 15, 18, 20, 22 };
+        this.viewModel = TipCalculatorViewModel.Create(customTipPercent, percentages);
+    }
+
+    protected void HandleCustomTipAmountChanged(ChangeEventArgs e)
+    {
+        try
+        {
+            this.viewModel.Errors.Clear();
+            var candidate = e?.Value?.ToString()?.Trim() ?? string.Empty;
+            this.viewModel.ChangeCustomTip(candidate);
+        }
+        catch (InvalidPercentException ex)
+        {
+            var message = ex.Message.Remove(ex.Message.IndexOf('('));
+            this.viewModel.Errors.Add(message);
+        }
+    }
+}

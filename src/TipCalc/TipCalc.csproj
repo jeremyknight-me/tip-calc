@@ -1,27 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
-    <PropertyGroup>
-        <AssemblyName>JK.TipCalc</AssemblyName>
-        <RootNamespace>JK.TipCalc</RootNamespace>
-        <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-    </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyName>JK.TipCalc</AssemblyName>
+    <RootNamespace>JK.TipCalc</RootNamespace>
+    <LangVersion>13.0</LangVersion>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
 
-    <ItemGroup>
-      <None Include="staticwebapp.config.json" />
-    </ItemGroup>
+    <Authors>Jeremy Knight</Authors>
+    <Company>Jeremy Knight</Company>
+    <Copyright>Copyright Jeremy Knight. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/jeremyknight-me/tip-calc</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jeremyknight-me/tip-calc</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    
+    <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" PrivateAssets="all" />
-        <PackageReference Include="System.Net.Http.Json" />
-    </ItemGroup>
+  <ItemGroup>
+    <None Include="staticwebapp.config.json" />
+  </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\JK.TipCalc.Common\JK.TipCalc.Common.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.0" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="9.0.0" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
-    </ItemGroup>
+  <ItemGroup>
+    <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+  </ItemGroup>
 
 </Project>
