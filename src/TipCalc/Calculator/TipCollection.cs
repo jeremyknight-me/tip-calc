@@ -10,15 +10,15 @@ public sealed class TipCollection
     {
         foreach (var percent in percents)
         {
-            this.Items.Add(Tip.Create(percent));
+            Items.Add(Tip.Create(percent));
         }
     }
 
-    public List<Tip> Items { get; private set; } = new();
+    public List<Tip> Items { get; private set; } = [];
 
     public void SetMealValues(decimal amount, decimal discount)
     {
-        foreach (var item in this.Items)
+        foreach (Tip item in Items)
         {
             item.SetMealValues(amount, discount);
         }
@@ -26,7 +26,7 @@ public sealed class TipCollection
 
     public void RoundDown()
     {
-        foreach (var item in this.Items)
+        foreach (Tip item in Items)
         {
             item.RoundDown();
         }
@@ -34,7 +34,7 @@ public sealed class TipCollection
 
     public void RoundUp()
     {
-        foreach (var item in this.Items)
+        foreach (Tip item in Items)
         {
             item.RoundUp();
         }

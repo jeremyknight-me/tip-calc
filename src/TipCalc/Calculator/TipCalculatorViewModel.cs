@@ -2,39 +2,36 @@
 
 public class TipCalculatorViewModel
 {
-    private decimal amount;
-    private decimal discount;
-
     private TipCalculatorViewModel(int customTipPercent, IEnumerable<int> percentList)
     {
-        this.State = CalculatorState.Default;
-        var fullList = percentList.Union(new int[] { customTipPercent });
-        this.Tips = new TipCollection(fullList);
+        State = CalculatorState.Default;
+        IEnumerable<int> fullList = percentList.Union([customTipPercent]);
+        Tips = new TipCollection(fullList);
     }
 
     public CalculatorState State { get; private set; }
     public TipCollection Tips { get; private set; }
-    public Tip CustomTip => this.Tips.Items.Last();
+    public Tip CustomTip => Tips.Items.Last();
     public List<string> Errors { get; private set; } = new();
-    public bool HasErrors => this.Errors.Any();
+    public bool HasErrors => Errors.Any();
 
     public decimal Amount
     {
-        get => this.amount;
+        get => field;
         set
         {
-            this.amount = value;
-            this.Tips.SetMealValues(value, this.Discount);
+            field = value;
+            Tips.SetMealValues(value, Discount);
         }
     }
 
     public decimal Discount
     {
-        get => this.discount;
+        get => field;
         set
         {
-            this.discount = value;
-            this.Tips.SetMealValues(this.Amount, value);
+            field = value;
+            Tips.SetMealValues(Amount, value);
         }
     }
 
@@ -49,15 +46,15 @@ public class TipCalculatorViewModel
             throw new InvalidPercentException(nameof(newValue));
         }
 
-        this.CustomTip.Percent.SetValue(newValue);
-        this.CustomTip.SetMealValues(this.Amount, this.Discount);
-        switch (this.State)
+        CustomTip.Percent.Value = newValue;
+        CustomTip.SetMealValues(Amount, Discount);
+        switch (State)
         {
             case CalculatorState.RoundDown:
-                this.CustomTip.RoundDown();
+                CustomTip.RoundDown();
                 break;
             case CalculatorState.RoundUp:
-                this.CustomTip.RoundUp();
+                CustomTip.RoundUp();
                 break;
                 //case CalculatorState.Default:
                 //default:
@@ -66,19 +63,19 @@ public class TipCalculatorViewModel
 
     public void Reset()
     {
-        this.Tips.SetMealValues(this.amount, this.discount);
-        this.State = CalculatorState.Default;
+        Tips.SetMealValues(Amount, Discount);
+        State = CalculatorState.Default;
     }
 
     public void RoundDown()
     {
-        this.Tips.RoundDown();
-        this.State = CalculatorState.RoundDown;
+        Tips.RoundDown();
+        State = CalculatorState.RoundDown;
     }
 
     public void RoundUp()
     {
-        this.Tips.RoundUp();
-        this.State = CalculatorState.RoundUp;
+        Tips.RoundUp();
+        State = CalculatorState.RoundUp;
     }
 }

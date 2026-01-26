@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>JK.TipCalc</AssemblyName>
     <RootNamespace>JK.TipCalc</RootNamespace>
-    <LangVersion>14.0</LangVersion>
+    <LangVersion>latest</LangVersion>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>

@@ -3,34 +3,34 @@
 <input @attributes="AdditionalAttributes"
        type="number"
        class="@CssClass"
-       value="@stringValue"
+       value="@_stringValue"
        @oninput="OnInput"
        @onblur="OnBlur" />
 
 @code {
-    private string stringValue;
-    private decimal last;
+    private string _stringValue;
+    private decimal _last;
 
     protected override void OnParametersSet()
     {
-        if (!this.CurrentValue.Equals(last))
+        if (!CurrentValue.Equals(_last))
         {
-            this.last = this.CurrentValue;
-            this.stringValue = this.CurrentValueAsString;
+            _last = CurrentValue;
+            _stringValue = CurrentValueAsString;
         }
     }
 
     private void OnInput(ChangeEventArgs e)
     {
-        this.CurrentValueAsString = this.stringValue = e.Value.ToString();
-        this.last = this.CurrentValue;
+        CurrentValueAsString = _stringValue = e.Value.ToString();
+        _last = CurrentValue;
     }
 
     private void OnBlur(FocusEventArgs e)
     {
-        if (!this.EditContext.GetValidationMessages(this.FieldIdentifier).Any())
+        if (!EditContext.GetValidationMessages(FieldIdentifier).Any())
         {
-            this.stringValue = this.CurrentValueAsString;
+            _stringValue = CurrentValueAsString;
         }
     }
 }

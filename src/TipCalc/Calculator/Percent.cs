@@ -2,27 +2,28 @@
 
 public sealed class Percent
 {
-    public int Value { get; private set; } = 0;
-
-    private Percent(int value)
+    private Percent()
     {
-        this.SetValue(value);
     }
 
-    public void SetValue(int value)
+    public int Value
     {
-        if (value < 0 || value > 100)
+        get => field;
+        set
         {
-            throw new InvalidPercentException(nameof(value));
-        }
+            if (value < 0 || value > 100)
+            {
+                throw new InvalidPercentException(nameof(value));
+            }
 
-        this.Value = value;
+            field = value;
+        }
     }
 
-    public static Percent Create(int value) => new(value);
+    public static Percent Create(int value) => new() { Value = value };
 
     public override string ToString()
     {
-        return this.Value.ToString("##");
+        return Value.ToString("##");
     }
 }

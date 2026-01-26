@@ -4,7 +4,7 @@ public class Tip
 {
     private Tip(int percent)
     {
-        this.Percent = Percent.Create(percent);
+        Percent = Percent.Create(percent);
     }
 
     public Percent Percent { get; set; }
@@ -13,22 +13,22 @@ public class Tip
 
     public void SetMealValues(decimal mealAmount, decimal mealDiscount)
     {
-        this.TipAmount = (mealAmount + mealDiscount) * (this.Percent.Value / 100m);
-        this.Total = mealAmount + this.TipAmount;
+        TipAmount = (mealAmount + mealDiscount) * (Percent.Value / 100m);
+        Total = mealAmount + TipAmount;
     }
 
     public void RoundDown()
     {
-        var diff = this.Total - decimal.Floor(this.Total);
-        this.Total -= diff;
-        this.TipAmount -= diff;
+        var diff = Total - decimal.Floor(Total);
+        Total -= diff;
+        TipAmount -= diff;
     }
 
     public void RoundUp()
     {
-        var diff = decimal.Ceiling(this.Total) - this.Total;
-        this.Total += diff;
-        this.TipAmount += diff;
+        var diff = decimal.Ceiling(Total) - Total;
+        Total += diff;
+        TipAmount += diff;
     }
 
     public static Tip Create(int percent)
