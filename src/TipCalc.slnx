@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
+  <Project Path="TipCalc.Tests/TipCalc.Tests.csproj" />
+  <Project Path="TipCalc/TipCalc.csproj" />
+</Solution>
